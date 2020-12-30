@@ -1,0 +1,34 @@
+Package: RIC
+Title: RIC (RNA interaction capture)
+Version: 0.99.0
+Authors@R: c(
+    person("Maria", "Dermit",
+    email = "maria.dermit@qmul.ac.uk",
+    comment = c(ORCID = "0000-0002-6287-8367"),
+    role = c("aut", "cre")))
+Description: RBP package automates search for RBP from OOPS (orthogonal organic)
+    phase separation experiments. 
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 4.1), ggplot2
+RoxygenNote: 7.1.1
+Imports:
+    assertthat,
+    dplyr,
+    stringr,
+    tibble,
+    tidyr,
+    SummarizedExperiment (>= 1.11.5),
+    rmarkdown,
+    ggrepel,
+    broom,
+    glue
+Suggests: 
+    testthat (>= 3.0.0),
+    BiocStyle,
+    knitr
+biocViews: DataImport,Proteomics, MassSpectrometry   
+VignetteBuilder: knitr
+Config/testthat/edition: 3
