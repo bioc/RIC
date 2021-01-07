@@ -13,7 +13,7 @@
 #' }
 #' @return dataframe
 #' @export
-filter_MaxQuant <- function(proteins, tofilter,ratios="Ratio.H.L.normalized.") {
+filterRIC <- function(proteins, tofilter) {
   assertthat::assert_that(is.data.frame(proteins),
                           is.character(tofilter),
                           is.character(ratios))
