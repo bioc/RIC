@@ -101,7 +101,6 @@ source(mapPeptidespath) #part of RBPmap package
 data("miniProtFeatures") #these data are >5 MB and are included in RICdata
 summary(miniProtFeatures)
 ProtFeatures<-miniProtFeatures
-names(ProtFeatures)
 data("Index") #these data are >5 MB and are included in RICdata
 data("enigmRBP") 
 ```
