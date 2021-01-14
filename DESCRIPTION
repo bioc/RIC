@@ -37,7 +37,8 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0),
     BiocStyle,
-    knitr
-biocViews: 	Infrastructure, Proteomics, MassSpectrometry   
+    knitr,
+    covr
+biocViews: Infrastructure, Proteomics, MassSpectrometry   
 VignetteBuilder: knitr
 Config/testthat/edition: 3
