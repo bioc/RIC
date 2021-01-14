@@ -13,14 +13,6 @@ test_that("plot_scatterreplicates throws error without valid input", {
   }) 
 
 
-aggregatedsmall<-agregagte_singlepeptides(QWCLpeptidessmall,SV_seq, whichorder = c(1,2,4,3,6,5,7,10,9,8), names_samples=  paste(c( "hour18","hour4" ,"mock"),rep(1:3,each=3),sep='_') )
+aggregatedsmall<-data.frame(ENSGid=c("ENSG00000100030", "ENSG00000100836" ,"ENSG00000104131"),symbol=c("MAPK1", "PABPN1", "EIF3J"),Know_RBP=c("no", "known_RBP", "known_RBP"),hour18_1=runif(3),hour4_1=runif(3),mock_1=runif(3),hour18_2=runif(3),hour4_2=runif(3),mock_2=runif(3),hour18_3=runif(3),hour4_3=runif(3),mock_3=runif(3))
 
 
-
-
-test_that("plot_scatterreplicates  returns a plot ", {
-  expect_identical(plot_scatterreplicates(aggregatedsmall,protein_1 = "ENSG00000100030", protein_2= "ENSG00000142453", xlimits=c(20,34), ylimits=c(20,34), repx = "hour18_1",repy = "hour18_2"),
-                   plot_scatterreplicates(aggregatedsmall,protein_1 = "ENSG00000100030", protein_2= "ENSG00000142453", xlimits=c(20,34), ylimits=c(20,34), repx = "hour18_2",repy = "hour18_1"))
-
-  
-  })

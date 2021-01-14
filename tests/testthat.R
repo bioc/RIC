@@ -1,4 +1,4 @@
 library(testthat)
-library(RBP)
+library(RIC)
 
-test_check("RBP")
+test_check("RIC")
