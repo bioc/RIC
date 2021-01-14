@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/demar01/RIC/workflows/R-CMD-check/badge.svg)](https://github.com/demar01/RIC/actions)
+[![codecov](https://codecov.io/gh/demar01/RIC/branch/main/graph/badge.svg?token=ub0ahRD7Bc)](https://codecov.io/gh/demar01/RIC)
  <!-- badges: end -->
   
 `RIC` is a package that contains a number of functions to analyse RNA-bound proteins detected in on oligo-DT-mediated RNA capture experiments. The package contains published
