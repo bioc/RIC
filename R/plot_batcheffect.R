@@ -18,7 +18,7 @@ plot_batcheffect <- function (aggregated_peptides,sample_names=c('hour18','hour4
                           is.character(sample_names))
   
   
-  columns<-str_which(colnames(aggregatedsmall),sample_names)
+  columns<-str_which(colnames(aggregated_peptides),sample_names)
   if(length(columns) < 1) {
     stop("specified sample_names ('", sample_names,
          "') are not in ",colnames(aggregated_peptides),

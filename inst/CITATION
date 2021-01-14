@@ -1,0 +1,22 @@
+citHeader("To cite RIC in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Global analysis of RNA-binding protein
+dynamics by comparative and enhanced RNA
+interactome captures",
+  author       = personList(as.person("Joel I. Perez-Perri"),
+                   as.person("Marko Noerenberg"),
+                    as.person("Wael Kamel"),
+                     as.person("Caroline E. Lenz"),
+                      as.person("Shabaz Mohammed"),
+                       as.person("Matthias W. Hentze"),
+                          as.person("Alfredo Castello")),
+         journal = "Nature Protocols",
+         year = "2021",
+         volume = "16",
+         pages = "27–60",
+         textVersion = paste("Joel I. Perez-Perri, Marko Noerenberg, Wael Kamel, Caroline E. Lenz, Shabaz Mohammed, Matthias W. Hentze & Alfredo Castello",
+           "Global analysis of RNA-binding protein
+dynamics by comparative and enhanced RNA
+interactome captures",
+           "Nature protocols (2021)."))

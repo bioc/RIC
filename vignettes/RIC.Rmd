@@ -30,12 +30,10 @@ suppressPackageStartupMessages({
 
 
 `RIC` (RNA interaction capture) is a package that provides an analytical workflow of
-mass spectrometry proteomics SILAC quantitative data from compariative RNA interaction capture (cRIC)  experiments [@Queiroz2019]. 
-In this type of experiments, oligo DT capture and total cell lysate as used as input normalization... 
+mass spectrometry proteomics SILAC quantitative data from compariative RNA interaction capture (cRIC)  experiments [@Garcia-Moreno2019]. 
+In this type of experiments, oligo DT capture and total cell lysate as used as input normalization.
 
-__Insert Schematic diagram of the cRIC method.__
-
-RIC requires tabular input e.g. peptides.txt files output of quantitative analysis software like MaxQuant. Functions are provided for preparation, filtering, calculating SILAC ratios and generating  SummarizedExperiment objects, as well as statistical testing of differentially RBP due to a given biological condition/treatment. It also includes tools to check intermediate steps in the workflow, such as normalization. Finally, visualization tools are provided to explore the results, including barplots, scatter plots and volcano plots.
+RIC requires tabular input e.g. peptides.txt files output of quantitative analysis software like MaxQuant. Functions are provided for preparation and generating  QFeatures objects [@Gatto2020], filtering, calculating cRIC ratios as well as statistical testing of differentially RBP due to a given biological condition/treatment. It also includes tools to check intermediate steps in the workflow, such as bacth correction Finally, visualization tools are provided to explore the results, including barplots, scatter and volcano plots of RIC, WCL and cRIC quantititative and semi-quantitative data.
 
 
 # Installation and loading package
@@ -46,45 +44,72 @@ if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
 BiocManager::install("RIC")
 library("RIC")
-```
 
+install_github("demar01/RICdata")
+```
 Once you have the package installed, load `RIC` and dplyr for data transformation into R. 
 
 ```{r setup, message=FALSE}
 library(RIC)
+library(RICdata)
+library(stringr)
 library(dplyr)
-library(SummarizedExperiment)
+library(stringr)
 library(magrittr)
-library(patchwork)
 library(QFeatures)
+library(Biostrings)
 ```
 
 
 # Getting  the data
 We analyse the dataset from Garcia-Moreno et al 2019. There are three biological replicates 
 
-The raw mass spectrometry data were first analyzed using MaxQuant [@Cox2014] and the resulting “peptides.txt” file is used as input for the  downstream analysis. These files are provided with the RIC package. Thanks to the Qfeatures readQFeatures function a text file can be read straight into a QFeatures object. 
+The raw mass spectrometry data were first analyzed using MaxQuant [@Cox2014] and the resulting “peptides.txt” file is used as input for the  downstream analysis. These files are provided with the RIC package. Thanks to the Qfeatures [@Gatto2020] `readQFeatures` function a text file can be read straight into a QFeatures object, a standardize structure to efficiently handle quantitative mass spectrometry data. Since we need to provide with the indexes of the of the columns to be used as expression values, we provided the tabular data with this package. 
 
-```{r load-data}
-# The data is provided with the package
-WCLpeptidesfilepath<- system.file("extdata","WCL_peptides.txt", package = "RIC")
-RICpeptidesfilepath<- system.file( "extdata", "RIC_peptides.txt", package = "RIC")
-```
-These would be the file path where your peptides.txt life.
+```{r load-data-reading-QFeatures}
+# Path to tabular data
+WCLpeptidesfilepath<- system.file("extdata","WCL_peptides.txt", package = "RICdata")
+RICpeptidesfilepath<- system.file( "extdata", "RIC_peptides.txt", package = "RICdata")
 
-The authors gave a slightly different name to the oligo DT (RIC) and  WCL experiment. We need to extract the intensity columns of interest.
-```{r}
+  # Tabular data 
+data("WCLpeptides.raw")
+data("RICpeptides.raw")
+RICpeptides <- RICpeptides.raw
+WCLpeptides <- WCLpeptides.raw
+
+#Indices of the columns to be used as expression values
 j <- str_which(colnames(WCLpeptides),str_c(c("Intensity.((\\D)).18_M_4","Intensity.((\\D)).4_18_M","Intensity.((\\D)).M_4_18"), collapse="|"))
 i <- str_which(colnames(RICpeptides),str_c("Intensity.[H|M|L].", collapse="|"))
 
+#Converting tabular data into a QFeatures object
 QWCLpeptides <- readQFeatures(WCLpeptidesfilepath, ecol = j, sep = "\t", name = "peptides", fnames = "Sequence")
 QRICpeptides <- readQFeatures(RICpeptidesfilepath, ecol = i, sep = "\t", name = "peptides", fnames = "Sequence")
+```
+`readQFeatures` can take either file path where your peptides.txt live or the tabular data already read.  We need to detect the position where the __Intensity__ columns are. Note that the authors of RIC experiment gave different names to the oligo DT (RIC) and  WCL experiments, so we need to have one set of indexes for `WCL` experiment (j) and one set of indexes for `RIC` experiment (i).
 
+  
+We need additional information to process the RIC pipeline: 1) SV_proteins.txt (provided with this package) contains additional Sindbis virus (SV)  proteins to be added to the mapping. This file should be read in FASTA format. Additional data and functions are obtained from the [`RBDmap` and `RBDmapHeLa` packages](http://www.hentze.embl.de/public/RBDmap/)
+
+```{r load-additional-information}
+#Viral protein annotation
+SV_seqpath<- system.file( "extdata", "SV_proteins.txt", package = "RIC")
+SV_seq <- readAAStringSet(SV_seqpath)
+
+# From RBDmap and RBDmapHeLa 
+mapPeptidespath<- system.file( "scripts", "mapPeptides.R", package = "RIC")
+source(mapPeptidespath) #part of RBPmap package
+data("miniProtFeatures") #these data are >5 MB and are included in RICdata
+summary(miniProtFeatures)
+ProtFeatures<-miniProtFeatures
+names(ProtFeatures)
+data("Index") #these data are >5 MB and are included in RICdata
+data("enigmRBP") 
 ```
 
-## Encoding the experimental desing
+## Adding the experimental desing into the QFeature objects
 
-```{r}
+We can annotate with metadata our QFeature objects. This is important as it defines the order and sample names of experiments. 
+```{r experiment-QFeatures}
 sample_names=c('hour18','hour4','mock')
 QWCLpeptides$group <- paste(sample_names,rep(1:3,each=3),sep='_')
 QWCLpeptides$sample <- rep(1:3, each=3)
@@ -96,13 +121,12 @@ colData(QRICpeptides)
 
 Qfeatures_list<-list(QRICpeptides,QWCLpeptides)
 
-
 ```
 
 ## Filtering the data
 
 We filter for contaminant proteins  and decoy database hits which are indicated by "+" in the columns "Potential.contaminants" and "Reverse" respectively using  QFeatures-filtering functions.
-```{r dim-data-filtered}
+```{r filtering-data}
 QWCLpeptidesfiltered <- QWCLpeptides %>% 
     filterFeatures(~ Reverse == "") %>%
     filterFeatures(~ Potential.contaminant == "")
@@ -111,11 +135,12 @@ QRICpeptidesfiltered <- QRICpeptides %>%
     filterFeatures(~ Reverse == "") %>%
     filterFeatures(~ Potential.contaminant == "")
 
-#do these steps with map
+#This could be done in one step on Qfeatures_list
 ```
 
+
 ## Removing non-needed feature variables
-We can retain rowDatanames of interest 
+We can retain only rowDatanames of interest. To do this we can use the `QFeatures::selectRowData` function.
 ```{r QFeatures-selectRowData}
  
 rowDataNames(QWCLpeptidesfiltered)[["peptides"]] %>% length() #139
@@ -127,60 +152,146 @@ QRICpeptidesfiltered_clean <- selectRowData(QRICpeptidesfiltered, rowvars)
 
 rowDataNames(QWCLpeptidesfiltered_clean)[["peptides"]] %>% length() #3
 rowDataNames(QRICpeptidesfiltered_clean)[["peptides"]] %>% length() #3
+
+# QWCLpeptidesfiltered_clean & QRICpeptidesfiltered_clean could be saved at this point
 ```
 
 ## Visualizatoin of single-matched peptides
-[@Queiroz2019] only considered peptides than can be mapped to a single gene. We can visualize 
-how many genes each peptides match to.
+We can consider only  peptides from each experimental condition than map to a single gene [@Perez-Perri2020]. We can visualize how many genes each peptides matches to using the `plot_singlepeptides`. 
 
-```{r cheking-duplicated-pep2Ensg}
+```{r checking-duplicated-pep2Ensg}
 RIC::plot_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq)
 RIC::plot_singlepeptides(QRICpeptidesfiltered_clean,SV_seq)
 
 ```
-As we can see, most peptides uniquely match to one gene. 
+As we can see, most peptides uniquely match to one gene. Peptides that match to more than one gene will be excluded in the downstream analysis. 
 
 ## Aggregation of mean intensity values for each ENSEMBL gene ID
 
-```{r}
-aggregatedWCL<-RIC::agregagte_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq)
-aggregatedRIC<-agregagte_singlepeptides(QRICpeptidesfiltered_clean,SV_seq)
+We now calculate protein intensities from the mean intensity values of peptides mapped to the same gene using the `agregate_singlepeptides` function that takes the following arguments:
+- the name of the `QFeatures` : QWCLpeptidesfiltered_clean or QRICpeptidesfiltered_clean in this case
+- **`whichorder`**: the correct order of files and not the order given in MaxQuant output. It is critical at this point that we ensure  the correct order. 
+- **`names_samples`**: the name of the experimental conditions. Note that we have defined this previously when adding `QFeatures` metadata and it is defined in  `colData(QWCLpeptides)$group`
 
+
+```{r agregating-singlepeptides-intoproteins}
+#checking the sample names order as run in  maxquant for WCL 
+ c("sequence",rownames(colData(QWCLpeptidesfiltered_clean)))[c(1,2,4,3,6,5,7,10,9,8)]
+whichorder <-c(1,2,4,3,6,5,7,10,9,8)
+aggregatedWCL<-RIC::agregate_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq, whichorder = c(1,2,4,3,6,5,7,10,9,8), names_samples=  colData(QWCLpeptides)$group )
+
+
+#checking the sample names order as run in  maxquant for RIC 
+ c("sequence",rownames(colData(QRICpeptidesfiltered_clean)))[c(1,4,3,2,5,7,6,9,8,10)]
+whichorder <-c(1,4,3,2,5,7,6,9,8,10)
+aggregatedRIC<-RIC::agregate_singlepeptides(QRICpeptidesfiltered_clean,SV_seq, whichorder = c(1,4,3,2,5,7,6,9,8,10),  names_samples=  colData(QWCLpeptides)$group )
 ```
 
 ## Plot batch effect
-```{r}
+
+We can get a high-level overview of the data using the `plot_batcheffect` function, which can be very useful to observe batch effects, such as obvious differences between replicates.
+```{r plot-batcheffect, eval=FALSE}
 RIC::plot_batcheffect(aggregatedWCL)
 RIC::plot_batcheffect(aggregatedRIC)
 
 ```
 
 ## Remove batch effect
-```{r}
-batch2 <- c("A","A","A","B","B","B","C","C","C")
-aggregatedWCL_batch<-RIC::remove_batcheffect(aggregatedWCL,batch2)
 
-RIC::plot_batcheffect(aggregatedWCL_batch)
+If needed we can use the `remove_batcheffect` function, that uses limma's removeBatchEffect [@Ritchie2015].
+```{r remove-batcheffect}
+batch2 <- c("A","A","A","B","B","B","C","C","C")
+aggregatedWCL_batch<-remove_batcheffect(aggregatedWCL,batch2)
+
+plot_batcheffect(aggregatedWCL_batch)
 
 ```
 
-## semi-quantitative analysis
-usethis::use_r("plot_scatterreplicates")
+## Explore the intensity pattern across replicates
 
-## RNA bindin activity
-usethis::use_r("calculate_cRIC")
+We can get an overview of protein intensities across replicates using the function `plot_scatterreplicates`. In the example below we choose to visualise protein intensities for two input replicates and highligth the intensities of viral proteins "SV_wt_nsP2" and "SV_wt_E2".
 
-## Differential t-test
-usethis::use_r("test_onesample")
+```{r scatter-replicates-WCL}
+plot_scatterreplicates(aggregatedWCL_batch, protein_1 = "SV_wt_nsP2", protein_2= "SV_wt_E2",xlimits=c(20,34), ylimits=c(20,34),repx = "hour18_1",repy = "hour18_2" )
+```
+We can also plot the intensity of proteins between two replicates in the RIC experiment.
+```{r scatter-replicates-RIC}
+plot_scatterreplicates(aggregatedRIC, protein_1 = "SV_wt_nsP2", protein_2= "SV_wt_E2",xlimits=c(16,29), ylimits=c(16,29),repx = "hour18_1",repy = "hour18_2" )
 
-## semi-quantitative analysis
-usethis::use_r("semiq_cRIC")
+```
+
+
+## Calculate RNA bindin activity
+
+We can estimate the magnitude of RNA binding activity calculating the log2 (RIC/WCL) changes using the function `calculate_cRIC`.
+```{r calculate-cRIC}
+#Make sure things are pass in this order or it will not be correct! This is super breakable code!!! change to names, not positions
+cRIC <- calculate_cRIC(aggregatedWCL_batch,aggregatedRIC)
+```
+
+## Test for differential enrichment
+
+`test_moderateRIC` calculates a moderated t-test for set enrichment as implemented in limma [@Ritchie2015] and it silently returns a list with two components:
+
+1. The first component `test_moderateRIC` output is a list of same length as `sample_names` `r length(sample_names)`. Each component of this list is a dataframe with t.test output and has `r names(test_moderateRIC(aggregatedWCL_batch)[[1]][[1]])` names. 
+
+2. The second component `test_moderateRIC` output is a list of same length as `sample_names` `r length(sample_names)`. Each component of this list is a matrix with intensity values (median corrected).
+
+```{r test-moderateRIC}
+test_moderateRIC(aggregatedWCL_batch)
+test_moderateRIC(aggregatedRIC)
+
+```
 
 ## plot scatter cRIC
-usethis::use_r("plot_scattercRIC")
+
+We can access the output of `test_moderateRIC` to plot a visualize scatterplot Matrices for WCL and RIC experiment using `plot_scatterRIC`.
+```{r plot-scatterRIC}
+test_moderateRIC(aggregatedWCL_batch)[[1]]$diff_hour18_hour4 -> tabletoplotWCL
+test_moderateRIC(aggregatedWCL_batch)[[2]]$diff_hour18_hour4 ->  intensitiestoploWCL
+plot_scatterRIC(tabletoplotWCL,intensitiestoploWCL)
+
+test_moderateRIC(aggregatedRIC)[[1]]$diff_hour18_mock -> tabletoplotRIC
+test_moderateRIC(aggregatedRIC)[[2]]$diff_hour18_mock -> intensitiestoplotRIC
+plot_scatterRIC(tabletoplotRIC,intensitiestoplotRIC)
+
+```
 
 ## plot volcano cRIC
-usethis::use_r("plot_volcanocRIC")
+
+Similarly we can access the output of `test_moderateRIC` to plot a visualize volcanoplot  for WCL and RIC experiment using `plot_volcanoRIC`. Note that we only need the first output component of `test_moderateRIC` to represent a volcano. 
+
+```{r plot-volcanoRIC}
+plot_volcanoRIC(tabletoplotRIC)
+```
 
 
+## Semi-quantitative analysis
+
+Semi-quantitative analysis enables the analysis of proteins with ‘zero intensity’ values in one of the conditions. Data imputation can return artififats...
+
+Semi-quantitative analysis can be particularly useful for the identification of RBPs that which from active (present on RIC but not present on WCL [on/off]) to non-active(present on WCL but not present on RIC [off/on]). These missing values would be otherwise be missed in the previous  statistical analysis due to missing values. `semiq_cRIC` function returns a tabular data with one additional summary column per each sample name `sample_names` that contains the number of detectable intensity values on each condition upon filtering for a minimum threshold (`updown`) of log2(condition/relative).
+```{r semiq-cRIC}
+ output_semiqcRIC<-semiq_cRIC(aggregatedRIC,condition = "hour4",relative = "mock" ,updown=2 )
+output_semiqcRIC %>%
+  head(5)
+```
+## Save your results object for reuse
+
+To ease future analysis and/or visualization of RIC data, processed data can be saved. For example, we could save the cleaned `QWCLpeptidesfiltered_clean` and `QRICpeptidesfiltered_clean` Qfeature objects. 
+This allows us to easily change parameters in future analysis.
+
+``` {r save-load-Qfeatures, eval = FALSE}
+# Save analyzed data
+save(QWCLpeptidesfiltered_clean, QRICpeptidesfiltered_clean, file = "RICprocessed.RData")
+# These data could be loaded in future R sessions by
+load("RICprocessed.RData")
+```
+
+
+# Session Info
+
+```{r sessioninfo}
+sessionInfo()
+```
 

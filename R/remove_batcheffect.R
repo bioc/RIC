@@ -22,7 +22,7 @@ remove_batcheffect <- function (aggregated_peptides,
                           is.character(sample_names))
   
   
-  columns<-grep(sample_names,colnames(aggregated_peptides))
+  columns<-grep("hour18|hour4|mock" ,colnames(aggregated_peptides))
     if(length(columns) < 1) {
       stop("specified sample_names ('", sample_names,
            "') are not in ",colnames(aggregated_peptides),
