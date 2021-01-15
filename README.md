@@ -1,7 +1,6 @@
 # RIC: RNA interaction capture <img src="man/figures/RIC_hex.png" align="right" height="150"/>
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/demar01/RIC/workflows/R-CMD-check/badge.svg)](https://github.com/demar01/RIC/actions)
 [![codecov](https://codecov.io/gh/demar01/RIC/branch/main/graph/badge.svg?token=ub0ahRD7Bc)](https://codecov.io/gh/demar01/RIC)
 [![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
  <!-- badges: end -->
