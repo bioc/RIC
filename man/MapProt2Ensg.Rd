@@ -4,11 +4,15 @@
 \alias{MapProt2Ensg}
 \title{MapProt2Ensg}
 \usage{
-MapProt2Ensg(protein_list)
+MapProt2Ensg(protein_list, ProtFeatures = ProtFeatures)
 }
 \arguments{
 \item{protein_list}{list
 list of proteins}
+
+\item{ProtFeatures}{list
+list of annotations. The array component of this list (ProtFeatures$GeneName)
+is used in this function.}
 }
 \value{
 a list of mapped genes

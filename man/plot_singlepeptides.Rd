@@ -4,7 +4,7 @@
 \alias{plot_singlepeptides}
 \title{plot_singlepeptides}
 \usage{
-plot_singlepeptides(Qfeature, SV_seq, ENSG = TRUE, plot = TRUE)
+plot_singlepeptides(Qfeature, SV_seq, ProtFeatures, ENSG = TRUE, plot = TRUE)
 }
 \arguments{
 \item{Qfeature}{QFeatures,
@@ -12,6 +12,9 @@ Data object.}
 
 \item{SV_seq}{AAStringSet,
 DNAString object.}
+
+\item{ProtFeatures}{list,
+ProtFeatures$ProtSeq us a DNAString object.}
 
 \item{ENSG}{Logical,
 Whether or not peptide-mapping proteins are mapped to genes.}
@@ -27,6 +30,6 @@ plot_singlepeptides
 }
 \examples{
 if(interactive()){
-plot_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq)
+plot_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq,ProtFeatures)
 }
 }

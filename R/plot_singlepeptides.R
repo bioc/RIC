@@ -4,13 +4,15 @@
 #' Data object.
 #' @param SV_seq AAStringSet,
 #' DNAString object.
+#' @param ProtFeatures list,
+#' ProtFeatures$ProtSeq us a DNAString object.
 #' @param ENSG Logical,
 #' Whether or not peptide-mapping proteins are mapped to genes.
 #' @param plot Logical(1),
 #' If \code{TRUE} (default) the stacked barplot is produced.
 #' @examples
 #' if(interactive()){
-#' plot_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq)
+#' plot_singlepeptides(QWCLpeptidesfiltered_clean,SV_seq,ProtFeatures)
 #' }
 #' @return a stacked bar chart
 #' @import purrr
@@ -18,6 +20,7 @@
 plot_singlepeptides <-
   function(Qfeature,
            SV_seq,
+           ProtFeatures,
            ENSG = TRUE,
            plot = TRUE) {
     assertthat::assert_that(
@@ -34,7 +37,12 @@ plot_singlepeptides <-
       c(ProtFeatures$ProtSeq, SV_seq),
       verbose = FALSE
     )
-    ENSGid_who <- MapProt2Ensg(ProtIDs_who)
+    MapProt2Ensg <- function(protein_list,ProtFeatures){
+      lapply(protein_list,function(x)
+      {y=unname(ProtFeatures$GeneName[x])
+      unique(y[!is.na(y)])})
+    }
+    ENSGid_who <- MapProt2Ensg(ProtIDs_who,ProtFeatures)
     ENSGid_who[grep("SV_", ProtIDs_who)] <-
       ProtIDs_who[grep("SV_", ProtIDs_who)]
     ENSGid_who[grep("SV_s", ProtIDs_who)] <-
