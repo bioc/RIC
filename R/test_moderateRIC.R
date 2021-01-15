@@ -37,7 +37,8 @@ for (s in colnames(sample_combi)) {
   sample2 = Intensities[,cond == sample_combi[2,s]]
   X =sample1-sample2
   # This segment performs a median correction
-  for (j in 1:length(sample_names)) { X[,j] = X[,j] - median(X[,j],na.rm = TRUE)}
+  for (j in seq_along(sample_names)) {
+    X[,j] = X[,j] - median(X[,j],na.rm = TRUE)}
   diff_intensities[[s]] = X
   fit=eBayes(lmFit(X))
   fit$p.adj=p.adjust(fit$p.value,method="BH")

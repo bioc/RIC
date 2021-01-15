@@ -38,7 +38,8 @@ agregate_singlepeptides <-
     if (ncol(assay(Qfeature)) + 1 != length(whichorder)) {
       stop(
         paste0(
-          "lenght of whichorder is not valid\n",  "Make sure whichorder has length ",
+          "lenght of whichorder is not valid\n", 
+          "Make sure whichorder has length ",
           ncol(assay(Qfeature)) + 1
         ),   call. = FALSE )
     }
@@ -58,7 +59,8 @@ agregate_singlepeptides <-
       rownames_to_column("sequences")
     row_peptides[, 2:ncol(row_peptides)][row_peptides[, 2:ncol(row_peptides)] <
       1] <- NA
-    row_peptides[, 2:ncol(row_peptides)] <- log2(row_peptides[, 2:ncol(row_peptides)])
+    row_peptides[, 2:ncol(row_peptides)] <- 
+      log2(row_peptides[, 2:ncol(row_peptides)])
     # mutate_at(vars(starts_with("Intensity")),log2)
     row_peptides <- row_peptides[, whichorder]
 
@@ -105,12 +107,12 @@ agregate_singlepeptides <-
       )
     )))
 
-    proteins_who$symbol[grep("SV_", proteins_who$ENSGid)] <-
-      as.character(proteins_who$ENSGid[grep("SV_", proteins_who$ENSGid)])
-
-    proteins_who$Know_RBP <- ifelse(proteins_who$ENSGid %in% enigmRBP$Ensembl.gene.ID,
-      "known_RBP", "no"
-    )
+proteins_who$symbol[grep("SV_", proteins_who$ENSGid)] <-
+  as.character(proteins_who$ENSGid[grep("SV_", proteins_who$ENSGid)])
+proteins_who$Know_RBP <- ifelse(proteins_who$ENSGid %in%
+  enigmRBP$Ensembl.gene.ID,
+"known_RBP", "no"
+)
     proteins_who <-
       proteins_who %>% select(ENSGid, symbol, Know_RBP, everything())
     proteins_who <- data.frame(proteins_who, stringsAsFactors = FALSE)

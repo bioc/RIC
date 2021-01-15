@@ -48,7 +48,7 @@ calculate_cRIC <- function(WCL, RIC) {
   proteins_int <- merge(WCL, RIC,
     by = c("ENSGid", "symbol", "Know_RBP")
   )
-  # Do this by name. And not really need to overwrite but to mutate and then select 1:3 and new columns
+  # Do this by name.
   proteins_int[, 4:12] <- proteins_int[, 13:21] - proteins_int[, 4:12]
   proteins_int <- proteins_int[, 1:12]
 }
