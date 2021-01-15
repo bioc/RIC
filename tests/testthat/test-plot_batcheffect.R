@@ -5,5 +5,10 @@ test_that("plot_batcheffect throws error without valid input", {
   expect_error (plot_batcheffect("aggregatedsmall"))
   expect_error (plot_batcheffect("aggregatedsmall",sample_names="year"))
   expect_equal(str_which(colnames(aggregatedsmall),c("hour18", "hour4" , "mock" )), c( 4, 5 , 6 , 7,  8,  9, 10, 11, 12))  
+
+  columns<-str_which(colnames(aggregatedsmall),c("hour18" ,"hour4" ))
+  expect_type(columns, "integer")
+  expect_error (plot_batcheffect(aggregatedsmall,"year"))
+  
 }) 
  
