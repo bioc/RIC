@@ -4,6 +4,8 @@
 #' Data object.
 #' @param SV_seq AAStringSet,
 #' DNAString object.
+#' @param ProtFeatures list,
+#' ProtFeatures$ProtSeq us a DNAString object.
 #' @param whichorder numeric,
 #' to correctly reorder labels
 #' @param names_samples character,
@@ -23,6 +25,7 @@
 agregate_singlepeptides <-
   function(Qfeature,
            SV_seq,
+           ProtFeatures,
            whichorder,
            names_samples = paste(sample_names, rep(1:3, each = 3), sep = "_")) {
     if (is.integer(whichorder)) {
@@ -71,13 +74,19 @@ agregate_singlepeptides <-
       c(ProtFeatures$ProtSeq, SV_seq),
       verbose = FALSE
     )
-    ENSGid_who <- MapProt2Ensg(ProtIDs_who)
+    MapProt2Ensg <- function(protein_list,ProtFeatures){
+      lapply(protein_list,function(x)
+      {y=unname(ProtFeatures$GeneName[x])
+      unique(y[!is.na(y)])})
+    }
+    ENSGid_who <- MapProt2Ensg(ProtIDs_who,ProtFeatures)
     ENSGid_who[grep("SV_", ProtIDs_who)] <-
       ProtIDs_who[grep("SV_", ProtIDs_who)]
     ENSGid_who[grep("SV_", ProtIDs_who)] <-
       lapply(ENSGid_who[grep("SV_", ProtIDs_who)], function(x) {
         x[1]
       })
+    
 
 
     ENSGidUnique_who <- ENSGid_who

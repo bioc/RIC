@@ -7,6 +7,7 @@
 agregate_singlepeptides(
   Qfeature,
   SV_seq,
+  ProtFeatures,
   whichorder,
   names_samples = paste(sample_names, rep(1:3, each = 3), sep = "_")
 )
@@ -17,6 +18,9 @@ Data object.}
 
 \item{SV_seq}{AAStringSet,
 DNAString object.}
+
+\item{ProtFeatures}{list,
+ProtFeatures$ProtSeq us a DNAString object.}
 
 \item{whichorder}{numeric,
 to correctly reorder labels}
