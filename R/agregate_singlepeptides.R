@@ -1,4 +1,9 @@
-#' agregagte_singlepeptides
+#' Aggregate mean intensity values of peptides mapped to the same gene for each 
+#' ENSEMBL gene ID
+#' 
+#' \code{agregate_singlepeptides} calculates the mean intensity values of 
+#' peptides mapped to the same gene  to represent the intensity of the
+#' gene-encoded protein.
 #'
 #' @param Qfeature QFeatures,
 #' Data object.

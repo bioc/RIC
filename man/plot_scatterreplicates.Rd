@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_scatterreplicates.R
 \name{plot_scatterreplicates}
 \alias{plot_scatterreplicates}
-\title{plot_scatterreplicates}
+\title{Intensity patterns across replicate (proteins of interest get highlighted).}
 \usage{
 plot_scatterreplicates(
   aggregated_peptides,
@@ -48,7 +48,8 @@ Sets the replicate to represent on the y-axis}
 A scatter plot
 }
 \description{
-plot_scatterreplicates
+\code{plot_scatterreplicates} generates a scatterplot for two rgiven inputs
+(repx &repy) and highligths the intensities of viral proteins.
 }
 \examples{
 if(interactive()){

@@ -270,7 +270,8 @@ plot_scatterRIC(tabletoplotRIC,intensitiestoplotRIC)
 # Plotting volcano cRIC
 
 Similarly, we can access the output of `test_moderateRIC` and visualize with a  
-volcanoplot  for WCL and RIC experiment using `plot_volcanoRIC`. Note that we only need the first output component of `test_moderateRIC` to represent a volcano. 
+volcanoplot  for WCL and RIC experiment using `plot_volcanoRIC`. Note that we 
+only need the first output component of `test_moderateRIC` to represent a volcano. 
 
 ```{r plot-volcanoRIC}
 plot_volcanoRIC(tabletoplotRIC)
@@ -279,9 +280,16 @@ plot_volcanoRIC(tabletoplotRIC)
 
 # Semi-quantitative analysis
 
-Semi-quantitative analysis enables the analysis of proteins with ‘zero intensity’ values in one of the conditions. Data imputation can return artififats...
-
-Semi-quantitative analysis can be particularly useful for the identification of RBPs that which from active (present on RIC but not present on WCL [on/off]) to non-active(present on WCL but not present on RIC [off/on]). These missing values would be otherwise be missed in the previous  statistical analysis due to missing values. `semiq_cRIC` function returns a tabular data with one additional summary column per each sample name `sample_names` that contains the number of detectable intensity values on each condition upon filtering for a minimum threshold (`updown`) of log2(condition/relative).
+Semi-quantitative analysis enables the analysis of proteins with ‘zero intensity’
+values in one of the conditions.
+Semi-quantitative analysis can be particularly useful for the identification of
+RBPs that which from active (present on RIC but not present on WCL [on/off]) to 
+non-active(present on WCL but not present on RIC [off/on]). These missing values
+would be otherwise be missed in the previous  statistical analysis due to missing 
+values. `semiq_cRIC` function returns a tabular data with one additional summary 
+column per each sample name `sample_names` that contains the number of detectable 
+intensity values on each condition upon filtering for a minimum threshold 
+(`updown`) of log2(condition/relative).
 ```{r semiq-cRIC}
  output_semiqcRIC<-semiq_cRIC(aggregatedRIC,condition = "hour4",relative = "mock" ,updown=2 )
 output_semiqcRIC %>%

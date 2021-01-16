@@ -2,7 +2,8 @@
 % Please edit documentation in R/agregate_singlepeptides.R
 \name{agregate_singlepeptides}
 \alias{agregate_singlepeptides}
-\title{agregagte_singlepeptides}
+\title{Aggregate mean intensity values of peptides mapped to the same gene for each 
+ENSEMBL gene ID}
 \usage{
 agregate_singlepeptides(
   Qfeature,
@@ -32,7 +33,9 @@ to specify sample names}
 a dataframe
 }
 \description{
-agregagte_singlepeptides
+\code{agregate_singlepeptides} calculates the mean intensity values of 
+peptides mapped to the same gene  to represent the intensity of the
+gene-encoded protein.
 }
 \examples{
 if(interactive()){

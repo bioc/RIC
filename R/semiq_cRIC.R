@@ -1,10 +1,9 @@
-
-
-#df<-aggregatedRIC
-#condition <- "hour4"
-#relative<-"mock"
-#' Title
-#'
+#' Enables the analysis of proteins with intensity values in at least one
+#' condition.
+#' 
+#' \code{semiq_cRIC} returns a tabular data with one additional summary column
+#'  per sample that contains the number of detectable intensity values.
+#' 
 #' @param aggregated_peptides Dataframe 
 #' output from \code{\link{agregagte_singlepeptides}}
 #' @param condition Character,

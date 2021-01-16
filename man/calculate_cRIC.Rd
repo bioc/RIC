@@ -2,7 +2,10 @@
 % Please edit documentation in R/calculate_cRIC.R
 \name{calculate_cRIC}
 \alias{calculate_cRIC}
-\title{calculate_cRIC}
+\title{Estimate RNA binding activity
+ 
+\code{calculate_cRIC} calculates log2 (RIC/WCL) changes, which are used as a
+proxy of RNA binding activity.}
 \usage{
 calculate_cRIC(WCL, RIC)
 }
@@ -17,7 +20,10 @@ output from \code{\link{agregagte_singlepeptides}}}
 A data frame with log2(RIC/WCL) values
 }
 \description{
-calculate_cRIC
+Estimate RNA binding activity
+ 
+\code{calculate_cRIC} calculates log2 (RIC/WCL) changes, which are used as a
+proxy of RNA binding activity.
 }
 \examples{
 if(interactive()){

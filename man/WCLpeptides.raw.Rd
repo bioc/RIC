@@ -3,37 +3,33 @@
 \docType{data}
 \name{WCLpeptides.raw}
 \alias{WCLpeptides.raw}
-\title{Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
-during a timecourse experiment.
-The dataset contains the peptide.txt output file from
-\href{http://www.maxquant.org}{MaxQuant}.}
+\title{Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells
+during a timecourse experiment.}
 \format{
-A dataframe with 25136 rows and 148 variables.
-The important variables are as follows:
+A dataframe with 25136 rows and 148  variables:
 \describe{
+  \item{Protein.IDs}{Uniprot IDs}
   \item{Sequence}{The identified AA sequence of the peptide.}
   \item{Length}{The length of the sequence stored in the column 'Sequence'.}
   \item{Proteins}{Identifiers of proteins this site is associated with..}
-  \item{“Intensity L ” + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the light label partner.}
-  \item{“Intensity M ” + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.}
-  \item{“Intensity H ” + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
- }
+  \item{Intensity L  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the light label partner.}
+  \item{Intensity M  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.}
+  \item{Intensity H  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
+}
 }
 \source{
 Garcia-Moreno et al 2019.
 System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
-Molecular Cell  2019 Apr 4;74(1):196-211.e11
+Molecular Cell  2019 Apr 4;74:196-211.e11
 \href{https://pubmed.ncbi.nlm.nih.gov/30799147/}{10.1016/j.molcel.2019.01.017}.
 }
 \usage{
 WCLpeptides.raw
 }
 \value{
-A data.frame
+A data.frame.
 }
 \description{
-Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
-during a timecourse experiment.
 The dataset contains the peptide.txt output file from
 \href{http://www.maxquant.org}{MaxQuant}.
 }

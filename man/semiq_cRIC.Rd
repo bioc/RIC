@@ -2,7 +2,8 @@
 % Please edit documentation in R/semiq_cRIC.R
 \name{semiq_cRIC}
 \alias{semiq_cRIC}
-\title{Title}
+\title{Enables the analysis of proteins with intensity values in at least one
+condition.}
 \usage{
 semiq_cRIC(aggregated_peptides, condition, relative, updown)
 }
@@ -23,7 +24,8 @@ Threshold for FC to keep semi-quantitative values}
 Dataframe with semi-quantitative values
 }
 \description{
-Title
+\code{semiq_cRIC} returns a tabular data with one additional summary column
+ per sample that contains the number of detectable intensity values.
 }
 \examples{
  semiq_cRIC(aggregatedRIC,condition = "hour4",relative = "mock" ,updown=2 )
