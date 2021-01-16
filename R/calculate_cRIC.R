@@ -1,5 +1,8 @@
-#' calculate_cRIC
-#'
+#' Estimate RNA binding activity
+#'  
+#' \code{calculate_cRIC} calculates log2 (RIC/WCL) changes, which are used as a
+#' proxy of RNA binding activity.
+#'  
 #' @param WCL Dataframe
 #' output from \code{\link{agregagte_singlepeptides}}
 #' @param RIC Dataframe

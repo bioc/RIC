@@ -2,7 +2,7 @@
 % Please edit documentation in R/remove_batcheffect.R
 \name{remove_batcheffect}
 \alias{remove_batcheffect}
-\title{remove_batcheffect}
+\title{Perform batch effect correction}
 \usage{
 remove_batcheffect(
   aggregated_peptides,
@@ -24,7 +24,8 @@ indicates sample names}
 dataframe correted with \code{\link[limma]{removeBatchEffect}}
 }
 \description{
-remove_batcheffect
+\code{remove_batcheffect} performs batch correction given the second serie
+of batches and a vector indicating the sample names.
 }
 \examples{
 if(interactive()){

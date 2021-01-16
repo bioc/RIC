@@ -2,7 +2,7 @@
 % Please edit documentation in R/test_moderateRIC.R
 \name{test_moderateRIC}
 \alias{test_moderateRIC}
-\title{test_moderateRIC}
+\title{Differential enrichment test}
 \usage{
 test_moderateRIC(
   aggregated_peptides,
@@ -17,7 +17,8 @@ output from \code{\link{agregagte_singlepeptides}}}
 Invisibly return a list with diff_table and diff_intensities for each timepoint
 }
 \description{
-test_moderateRIC
+\code{test_moderateRIC} performs a moderated t-test enrichment of the 
+ aggregated mean intensity values for each protein for the different samples
 }
 \examples{
 if(interactive()){

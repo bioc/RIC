@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_scatterRIC.R
 \name{plot_scatterRIC}
 \alias{plot_scatterRIC}
-\title{Title}
+\title{Plot log2 fold changes across replicates (significant hits get highlighted).}
 \usage{
 plot_scatterRIC(tabletoplot, intensitiestoplot)
 }
@@ -17,7 +17,8 @@ Second element of l=list output from \code{\link{test_moderateRIC}}}
 A matrix of scatterplots
 }
 \description{
-Title
+\code{plot_scatterRIC} generates a multi-scatter plot for log2 fold changes
+across replicates for two given conditions.
 }
 \examples{
 if(interactive()){

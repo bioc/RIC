@@ -1,4 +1,7 @@
-#' plot_volcanoRIC
+#' Plot log2 fold changes against significance (significant hits get highlighted).
+#' 
+#' \code{plot_volcanoRIC} generates a volcano plot. Different significance levels 
+#' get highlighted in different colours.
 #'
 #' @param tabletoplot Dataframe
 #' First element of list output from \code{\link{test_moderateRIC}}

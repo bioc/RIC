@@ -1,4 +1,7 @@
-#' remove_batcheffect
+#' Perform batch effect correction
+#' 
+#' \code{remove_batcheffect} performs batch correction given the second serie
+#' of batches and a vector indicating the sample names. 
 #'
 #' @param aggregated_peptides Dataframe 
 #'  output from \code{\link{agregagte_singlepeptides}}

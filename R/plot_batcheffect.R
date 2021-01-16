@@ -1,5 +1,7 @@
-#' plot_batcheffect
-#'
+#' Multidimensional scaling across replicates
+#'  
+#' \code{plot_batcheffect} plots the level of similarity across replicates.
+#' 
 #' @param aggregated_peptides Dataframe
 #' output from \code{\link{agregagte_singlepeptides}}
 #' @param sample_names character

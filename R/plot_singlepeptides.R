@@ -1,5 +1,8 @@
-#' plot_singlepeptides
-#'
+#' Plot the number of protein(s) to which each peptide maps to. 
+#' 
+#' \code{plot_singlepeptides} generates a stacked barplot with of protein(s) to
+#' which peptides map to.
+#'  
 #' @param Qfeature QFeatures,
 #' Data object.
 #' @param SV_seq AAStringSet,

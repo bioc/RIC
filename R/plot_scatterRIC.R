@@ -1,9 +1,7 @@
-
-
-# test_moderateRIC(aggregatedRIC)[[1]]$diff_hour18_hour4 -> tabletoplot
-# test_moderateRIC(aggregatedRIC)[[2]]$diff_hour18_hour4 -> intensitiestoplot
-
-#' Title
+#' Plot log2 fold changes across replicates (significant hits get highlighted).
+#' 
+#' \code{plot_scatterRIC} generates a multi-scatter plot for log2 fold changes
+#' across replicates for two given conditions. 
 #'
 #' @param tabletoplot Dataframe
 #' First element of list output from \code{\link{test_moderateRIC}}

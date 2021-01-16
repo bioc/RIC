@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_singlepeptides.R
 \name{plot_singlepeptides}
 \alias{plot_singlepeptides}
-\title{plot_singlepeptides}
+\title{Plot the number of protein(s) to which each peptide maps to.}
 \usage{
 plot_singlepeptides(Qfeature, SV_seq, ProtFeatures, ENSG = TRUE, plot = TRUE)
 }
@@ -26,7 +26,8 @@ If \code{TRUE} (default) the stacked barplot is produced.}
 a stacked bar chart
 }
 \description{
-plot_singlepeptides
+\code{plot_singlepeptides} generates a stacked barplot with of protein(s) to
+which peptides map to.
 }
 \examples{
 if(interactive()){

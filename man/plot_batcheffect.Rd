@@ -2,7 +2,9 @@
 % Please edit documentation in R/plot_batcheffect.R
 \name{plot_batcheffect}
 \alias{plot_batcheffect}
-\title{plot_batcheffect}
+\title{Multidimensional scaling across replicates
+ 
+\code{plot_batcheffect} plots the level of similarity across replicates.}
 \usage{
 plot_batcheffect(
   aggregated_peptides,
@@ -20,7 +22,9 @@ indicates sample names}
 Multidimensional scaling plot
 }
 \description{
-plot_batcheffect
+Multidimensional scaling across replicates
+ 
+\code{plot_batcheffect} plots the level of similarity across replicates.
 }
 \examples{
 if(interactive()){

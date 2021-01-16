@@ -6,7 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • RIC</title>
+<title>Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
+during a timecourse experiment.
+The dataset contains the peptide.txt output file from
+MaxQuant. — WCLpeptides.raw • RIC</title>
 
 
 <!-- jquery -->
@@ -39,7 +42,14 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
+during a timecourse experiment.
+The dataset contains the peptide.txt output file from
+MaxQuant. — WCLpeptides.raw" />
+<meta property="og:description" content="Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
+during a timecourse experiment.
+The dataset contains the peptide.txt output file from
+MaxQuant." />
 
 
 
@@ -58,7 +68,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -103,117 +113,50 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
+during a timecourse experiment.
+The dataset contains the peptide.txt output file from
+<a href='http://www.maxquant.org'>MaxQuant</a>.</h1>
+    
+    <div class="hidden name"><code>WCLpeptides.raw.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells 
+during a timecourse experiment.
+The dataset contains the peptide.txt output file from
+<a href='http://www.maxquant.org'>MaxQuant</a>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='va'>WCLpeptides.raw</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="RICpeptides.raw.html">RICpeptides.raw</a></code> </p>
-        </td>
-        <td><p>RNA-bound proteomes of a SILAC experiment of SINV-infected cells
-during a timecourse experiment.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="WCLpeptides.raw.html">WCLpeptides.raw</a></code> </p>
-        </td>
-        <td><p>Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells
-during a timecourse experiment.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="agregate_singlepeptides.html">agregate_singlepeptides()</a></code> </p>
-        </td>
-        <td><p>Aggregate mean intensity values of peptides mapped to the same gene for each 
-ENSEMBL gene ID</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_cRIC.html">calculate_cRIC()</a></code> </p>
-        </td>
-        <td><p>Estimate RNA binding activity
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A dataframe with 25136 rows and 148 variables.
+The important variables are as follows:</p><dl>
+  <dt>Sequence</dt><dd><p>The identified AA sequence of the peptide.</p></dd>
+  <dt>Length</dt><dd><p>The length of the sequence stored in the column 'Sequence'.</p></dd>
+  <dt>Proteins</dt><dd><p>Identifiers of proteins this site is associated with..</p></dd>
+  <dt>“Intensity L ” + M_4_18/18_M_4/4_18_M exp</dt><dd><p>Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the light label partner.</p></dd>
+  <dt>“Intensity M ” + M_4_18/18_M_4/4_18_M exp</dt><dd><p>Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.</p></dd>
+  <dt>“Intensity H ” + M_4_18/18_M_4/4_18_M exp</dt><dd><p>Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.</p></dd>
  
-<code>calculate_cRIC</code> calculates log2 (RIC/WCL) changes, which are used as a
-proxy of RNA binding activity.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_batcheffect.html">plot_batcheffect()</a></code> </p>
-        </td>
-        <td><p>Multidimensional scaling across replicates
- 
-<code>plot_batcheffect</code> plots the level of similarity across replicates.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_scatterRIC.html">plot_scatterRIC()</a></code> </p>
-        </td>
-        <td><p>Plot log2 fold changes across replicates (significant hits get highlighted).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_scatterreplicates.html">plot_scatterreplicates()</a></code> </p>
-        </td>
-        <td><p>Intensity patterns across replicate (proteins of interest get highlighted).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_singlepeptides.html">plot_singlepeptides()</a></code> </p>
-        </td>
-        <td><p>Plot the number of protein(s) to which each peptide maps to.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_volcanoRIC.html">plot_volcanoRIC()</a></code> </p>
-        </td>
-        <td><p>Plot log2 fold changes against significance (significant hits get highlighted).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_batcheffect.html">remove_batcheffect()</a></code> </p>
-        </td>
-        <td><p>Perform batch effect correction</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="semiq_cRIC.html">semiq_cRIC()</a></code> </p>
-        </td>
-        <td><p>Enables the analysis of proteins with intensity values in at least one
-condition.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="test_moderateRIC.html">test_moderateRIC()</a></code> </p>
-        </td>
-        <td><p>Differential enrichment test</p></td>
-      </tr>
-    </tbody>
-    </table>
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>Garcia-Moreno et al 2019.
+System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
+Molecular Cell  2019 Apr 4;74(1):196-211.e11
+<a href='https://pubmed.ncbi.nlm.nih.gov/30799147/'>10.1016/j.molcel.2019.01.017</a>.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data.frame</p>
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

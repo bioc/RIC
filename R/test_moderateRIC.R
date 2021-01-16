@@ -1,4 +1,7 @@
-#' test_moderateRIC
+#' Differential enrichment test
+#' 
+#' \code{test_moderateRIC} performs a moderated t-test enrichment of the 
+#'  aggregated mean intensity values for each protein for the different samples
 #'
 #' @param aggregated_peptides Dataframe
 #'  output from \code{\link{agregagte_singlepeptides}}

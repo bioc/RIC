@@ -1,10 +1,8 @@
-
-#aggregated_peptides<-aggregatedaggregated_peptides_batch
-#protein_1 <- "SV_wt_nsP2"
-#protein_2 <- "SV_wt_E2"
-
-#' plot_scatterreplicates
+#' Intensity patterns across replicate (proteins of interest get highlighted).
 #'
+#' \code{plot_scatterreplicates} generates a scatterplot for two rgiven inputs
+#' (repx &repy) and highligths the intensities of viral proteins.
+#'  
 #' @param aggregated_peptides Dataframe
 #' output from \code{\link{agregagte_singlepeptides}}
 #' @param protein_1 Character,
