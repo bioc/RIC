@@ -23,7 +23,7 @@ The important variables are as follows:
 Garcia-Moreno et al 2019.
 System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
 Molecular Cell  2019 Apr 4;74(1):196-211.e11
-\href{https://pubmed.ncbi.nlm.nih.gov/30799147/}.
+\href{https://pubmed.ncbi.nlm.nih.gov/30799147/}{10.1016/j.molcel.2019.01.017}.
 }
 \usage{
 WCLpeptides.raw
@@ -36,8 +36,5 @@ Whole cell lysate proteomes of a SILAC experiment of SINV-infected cells
 during a timecourse experiment.
 The dataset contains the peptide.txt output file from
 \href{http://www.maxquant.org}{MaxQuant}.
-}
-\examples{
-head(WCLpeptides.raw)
 }
 \keyword{datasets}
