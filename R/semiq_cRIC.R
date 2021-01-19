@@ -14,7 +14,9 @@
 #' Threshold for FC to keep semi-quantitative values
 #' @return Dataframe with semi-quantitative values 
 #' @examples
+#' if(interactive()){
 #'  semiq_cRIC(aggregatedRIC,condition = "hour4",relative = "mock" ,updown=2 )
+#' }
 #' @export
 semiq_cRIC <-
   function(aggregated_peptides,
