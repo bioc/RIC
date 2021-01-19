@@ -3,6 +3,7 @@ data("SV_seq")
 mapPeptidespath<- system.file( "scripts", "mapPeptides.R", package = "RIC")
 source(mapPeptidespath)
 library(QFeatures)
+library(tibble)
 
 
 test_that("agregate_singlepeptides throws error without valid input", {
