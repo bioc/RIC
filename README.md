@@ -17,16 +17,20 @@ Once installed, load the package by writing in the console
 library(RIC)
 ```
 
-### Datasets for analysis
-
-Mass-spectrometry dericed datasets available in `RIC` are:
-
-| Data  	|   Description	|
-|:---	|:---	|
-|  RIC_peptides 	|  RIC from HEK293 infected with SINV virus 	|
-|  WCL_peptides	|   WCL from HEK293 infected with SINV virus	|
-
-
 ### Additional information 
 
 Please see the vignette for complete workflow description.
+
+## References:
+
+For references about the software and how to use RIC data see:
+
+* Joel I Perez-Perri, Marko Noerenberg, Wael Kamel, Caroline E Lenz,
+Shabaz Mohammed, Matthias W Hentze, Alfredo Castello. Global analysis of 
+RNA-binding protein dynamics by comparative and enhanced RNA interactome capture
+Nat Protoc. 2021 Jan;16(1):27-60. doi: 10.1038/s41596-020-00404-1. Epub 2020 Nov 
+18.  (https://doi.org/10.1038/s41596-020-00404-1)
+  
+
+
+
