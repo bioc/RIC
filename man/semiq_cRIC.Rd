@@ -9,7 +9,7 @@ semiq_cRIC(aggregated_peptides, condition, relative, updown)
 }
 \arguments{
 \item{aggregated_peptides}{Dataframe 
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 
 \item{condition}{Character,
 Condition to perform semi-quantitative analysis on}
@@ -28,5 +28,7 @@ Dataframe with semi-quantitative values
  per sample that contains the number of detectable intensity values.
 }
 \examples{
+if(interactive()){
  semiq_cRIC(aggregatedRIC,condition = "hour4",relative = "mock" ,updown=2 )
+}
 }

@@ -11,10 +11,14 @@ test_moderateRIC(
 }
 \arguments{
 \item{aggregated_peptides}{Dataframe
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
+
+\item{sample_names}{character,
+character strimg with experiment sample name information}
 }
 \value{
-Invisibly return a list with diff_table and diff_intensities for each timepoint
+Invisibly return a list with diff_table and diff_intensities for each 
+timepoint
 }
 \description{
 \code{test_moderateRIC} performs a moderated t-test enrichment of the 

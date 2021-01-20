@@ -18,7 +18,7 @@ plot_scatterreplicates(
 }
 \arguments{
 \item{aggregated_peptides}{Dataframe
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 
 \item{protein_1}{Character,
 Name of selected protein (1) to highlight on the plot}

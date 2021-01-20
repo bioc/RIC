@@ -5,7 +5,7 @@
 #'  per sample that contains the number of detectable intensity values.
 #' 
 #' @param aggregated_peptides Dataframe 
-#' output from \code{\link{agregagte_singlepeptides}}
+#' output from \code{\link{agregate_singlepeptides}}
 #' @param condition Character,
 #' Condition to perform semi-quantitative analysis on 
 #' @param relative Character,

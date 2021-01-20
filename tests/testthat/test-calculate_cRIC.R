@@ -6,6 +6,7 @@ test_that("calculate_cRIC throws error without valid input", {
   mapPeptidespath<- system.file( "scripts", "mapPeptides.R", package = "RIC")
   source(mapPeptidespath)
   library(QFeatures)
+  library(Biostrings)
   expect_error (calculate_cRIC("aggregatedsmall",aggregatedsmall))
   expect_error (calculate_cRIC(aggregatedsmall,"aggregatedsmall"))
   

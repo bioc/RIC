@@ -12,7 +12,7 @@ remove_batcheffect(
 }
 \arguments{
 \item{aggregated_peptides}{Dataframe 
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 
 \item{batch2}{Character,
 indicates the corrected series of batches}

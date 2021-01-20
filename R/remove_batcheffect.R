@@ -4,7 +4,7 @@
 #' of batches and a vector indicating the sample names. 
 #'
 #' @param aggregated_peptides Dataframe 
-#'  output from \code{\link{agregagte_singlepeptides}}
+#'  output from \code{\link{agregate_singlepeptides}}
 #' @param batch2 Character,
 #' indicates the corrected series of batches
 #' @param sample_names Character(1),

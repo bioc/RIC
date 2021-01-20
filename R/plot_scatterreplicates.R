@@ -4,7 +4,7 @@
 #' (repx &repy) and highligths the intensities of viral proteins.
 #'  
 #' @param aggregated_peptides Dataframe
-#' output from \code{\link{agregagte_singlepeptides}}
+#' output from \code{\link{agregate_singlepeptides}}
 #' @param protein_1 Character,
 #' Name of selected protein (1) to highlight on the plot
 #' @param protein_2 Character,
