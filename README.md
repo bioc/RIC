@@ -9,7 +9,7 @@
 SILAC data published by [Garcia-Moreno et al 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6458987/) processed with [MaxQuant](http://www.nature.com/nbt/journal/v26/n12/full/nbt.1511.html)
 and follows the analytical steps described by [Perez-Perri et al 2020](https://www.nature.com/articles/s41596-020-00404-1).
 
-### Install
+## Install
 
 Once installed, load the package by writing in the console
 
@@ -17,7 +17,7 @@ Once installed, load the package by writing in the console
 library(RIC)
 ```
 
-### Additional information 
+## Additional information 
 
 Please see the vignette for complete workflow description.
 
