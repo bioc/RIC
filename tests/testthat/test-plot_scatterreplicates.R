@@ -4,6 +4,7 @@ test_that("plot_scatterreplicates throws error without valid input", {
   mapPeptidespath<- system.file( "scripts", "mapPeptides.R", package = "RIC")
   source(mapPeptidespath)
   library(QFeatures)
+  library(Biostrings)
   expect_error (plot_scatterreplicates("aggregatedWCL_batch",  xlimits=c(20,34), ylimits=c(20,34), repx = "hour18_1",repy = "hour18_2"))
   expect_error (plot_scatterreplicates(aggregatedWCL_batch,  "c(20,34)", ylimits=c(20,34), repx = "hour18_1",repy = "hour18_2"))
   expect_error (plot_scatterreplicates(aggregatedWCL_batch,  xlimits=c(20,34), "c(20,34)", repx = "hour18_1",repy = "hour18_2"))

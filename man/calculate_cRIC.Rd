@@ -11,10 +11,10 @@ calculate_cRIC(WCL, RIC)
 }
 \arguments{
 \item{WCL}{Dataframe
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 
 \item{RIC}{Dataframe
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 }
 \value{
 A data frame with log2(RIC/WCL) values

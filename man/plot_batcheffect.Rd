@@ -13,7 +13,7 @@ plot_batcheffect(
 }
 \arguments{
 \item{aggregated_peptides}{Dataframe
-output from \code{\link{agregagte_singlepeptides}}}
+output from \code{\link{agregate_singlepeptides}}}
 
 \item{sample_names}{character
 indicates sample names}

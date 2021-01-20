@@ -4,9 +4,9 @@
 #' proxy of RNA binding activity.
 #'  
 #' @param WCL Dataframe
-#' output from \code{\link{agregagte_singlepeptides}}
+#' output from \code{\link{agregate_singlepeptides}}
 #' @param RIC Dataframe
-#' output from \code{\link{agregagte_singlepeptides}}
+#' output from \code{\link{agregate_singlepeptides}}
 #' @return A data frame with log2(RIC/WCL) values
 #' @examples
 #' if(interactive()){

@@ -4,6 +4,7 @@ mapPeptidespath<- system.file( "scripts", "mapPeptides.R", package = "RIC")
 source(mapPeptidespath)
 library(QFeatures)
 library(tibble)
+library(Biostrings)
 
 
 test_that("agregate_singlepeptides throws error without valid input", {

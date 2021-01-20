@@ -4,8 +4,11 @@
 #'  aggregated mean intensity values for each protein for the different samples
 #'
 #' @param aggregated_peptides Dataframe
-#'  output from \code{\link{agregagte_singlepeptides}}
-#' @return Invisibly return a list with diff_table and diff_intensities for each timepoint
+#'  output from \code{\link{agregate_singlepeptides}}
+#' @param sample_names character,
+#' character strimg with experiment sample name information
+#' @return Invisibly return a list with diff_table and diff_intensities for each 
+#' timepoint
 #' @examples
 #' if(interactive()){
 #' test_moderateRIC(aggregatedWCL_batch)[[1]]$diff_hour18_hour4 -> tabletoplotWCL

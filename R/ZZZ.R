@@ -13,7 +13,9 @@
         "sample_names", "batch2",
       "x","y","protein_1","protein_2","xlimits","ylimits",
       "repx","repy","ENSGid","symbol","Know_RBP",
-      "coefficients","sig","p.value","p.adj","log2FC"
+      "coefficients","sig","p.value","p.adj","log2FC",
+      "test_moderateRIC","ENSG2category","ENSGannotation",
+      "QWCLpeptidesfiltered_clean","RIC.raw","SV_seq","WCL.raw","enigmRBP"
       )
     )
   invisible()

@@ -15,7 +15,6 @@ Description: RIC package automates search for RBP from cRIC (RNA-interactome cap
     across replicates, moderated statistical analysis adjusted for multiple 
     hypothesis testing and scatter and volcano plots visualizations, scatter and 
     volcano plots.
-    Finally, semi-quantitative...
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -33,7 +32,8 @@ Imports:
     QFeatures,
     rmarkdown,
     magrittr,
-    tidyverse
+    tidyverse,
+    Biostrings
 Suggests: 
     testthat (>= 3.0.0),
     BiocStyle,
