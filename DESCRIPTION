@@ -1,11 +1,11 @@
 Package: RIC
 Title: RIC (RNA interaction capture)
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: 
     person(given = c("Maria","Ni"),
            family = c("Dermit","Shuai"),
            role = c("aut","cre"),
-           comment = c(ORCID = "0000-0002-6287-8367",ORCID = "")
+           comment = c(ORCID = "0000-0002-6287-8367")
            email = c("maria.dermit@qmul.ac.uk","nishuai@yahoo.com"))
 Description: RIC package automates search for RBP from cRIC (RNA-interactome 
     capture)proteomics experiments. It requires tabular input (i.e. peptides.txt 
