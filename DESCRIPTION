@@ -1,6 +1,6 @@
 Package: RIC
 Title: RIC (RNA interaction capture)
-Version: 0.99.1
+Version: 0.99.2
 Authors@R: 
     person(given = c("Maria","Ni"),
            family = c("Dermit","Shuai"),
